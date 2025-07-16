@@ -1,4 +1,13 @@
 <resources>
+    <string name="app_name">Kotlin_Final_Project</string>
+    <string name="title">Project Title: MyMoments: A Personal Diary App</string>
+    <string name="course">Course: IT0079 - Mobile Applications Development 1</string>
+    <string name="submitby">Submitted by:</string>
+    <string name="antonio">Antonio, Juan Miguel G.</string>
+    <string name="peji">Peji, Sean James C.</string>
+    <string name="licas">Licas, Jaymard T.</string>
+    <string name="dulutan">Dulutan, John Carlo R.</string>
+
     <string name="login_title">Login</string>
     <string name="hint_email">Email Address</string>
     <string name="hint_password">Password</string>
@@ -15,5 +24,9 @@
     <string name="proceed">Proceed</string>
     <string name="welcome">Welcome</string>
     <string name="name">MyMoments: A Personal Diary App</string>
+    <string name="submitto">Submitted to:</string>
+    <string name="professor">Sir. Joseph Calleja</string>
+    <string name="datesubmitted">Date Submitted:</string>
+    <string name="datesub">July 22, 2025</string>
 
 </resources>
