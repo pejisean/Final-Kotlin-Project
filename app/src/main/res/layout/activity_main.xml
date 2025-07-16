@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="@string/title"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/course"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Title" />
+
+    <TextView
+        android:id="@+id/submittedby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/submitby"
+        app:layout_constraintEnd_toStartOf="@+id/antonio"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Course" />
+
+    <TextView
+        android:id="@+id/antonio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/antonio"
+        app:layout_constraintBaseline_toBaselineOf="@+id/submittedby"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/submittedby" />
+
+    <TextView
+        android:id="@+id/peji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/peji"
+        app:layout_constraintStart_toStartOf="@+id/antonio"
+        app:layout_constraintTop_toBottomOf="@+id/antonio" />
+
+    <TextView
+        android:id="@+id/licas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/licas"
+        app:layout_constraintStart_toStartOf="@+id/peji"
+        app:layout_constraintTop_toBottomOf="@+id/peji" />
+
+    <TextView
+        android:id="@+id/dulutan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/dulutan"
+        app:layout_constraintStart_toStartOf="@+id/licas"
+        app:layout_constraintTop_toBottomOf="@+id/licas" />
+
+    <TextView
+        android:id="@+id/submittedto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/submitto"
+        app:layout_constraintStart_toStartOf="@+id/submittedby"
+        app:layout_constraintTop_toBottomOf="@+id/dulutan" />
+
+    <TextView
+        android:id="@+id/professor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/professor"
+        app:layout_constraintBaseline_toBaselineOf="@+id/submittedto"
+        app:layout_constraintStart_toStartOf="@+id/antonio" />
+
+    <TextView
+        android:id="@+id/datesubmitted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/datesubmitted"
+        app:layout_constraintStart_toStartOf="@+id/submittedto"
+        app:layout_constraintTop_toBottomOf="@+id/submittedto" />
+
+    <TextView
+        android:id="@+id/datesubm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/datesub"
+        app:layout_constraintBaseline_toBaselineOf="@+id/datesubmitted"
+        app:layout_constraintStart_toStartOf="@+id/professor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
