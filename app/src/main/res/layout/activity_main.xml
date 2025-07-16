@@ -75,4 +75,39 @@
         app:layout_constraintStart_toStartOf="@+id/licas"
         app:layout_constraintTop_toBottomOf="@+id/licas" />
 
+    <TextView
+        android:id="@+id/submittedto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/submitto"
+        app:layout_constraintStart_toStartOf="@+id/submittedby"
+        app:layout_constraintTop_toBottomOf="@+id/dulutan" />
+
+    <TextView
+        android:id="@+id/professor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/professor"
+        app:layout_constraintBaseline_toBaselineOf="@+id/submittedto"
+        app:layout_constraintStart_toStartOf="@+id/antonio" />
+
+    <TextView
+        android:id="@+id/datesubmitted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/datesubmitted"
+        app:layout_constraintStart_toStartOf="@+id/submittedto"
+        app:layout_constraintTop_toBottomOf="@+id/submittedto" />
+
+    <TextView
+        android:id="@+id/datesubm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/datesub"
+        app:layout_constraintBaseline_toBaselineOf="@+id/datesubmitted"
+        app:layout_constraintStart_toStartOf="@+id/professor" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
