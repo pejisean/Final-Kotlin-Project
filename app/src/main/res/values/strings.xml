@@ -15,7 +15,7 @@
     <string name="datesub">July 22, 2025</string>
 
     <!-- para sa intro.xml -->
-    <string name="name">MyMoments: A Personal Diary App</string>
+    <string name="titlewnopt">MyMoments: A Personal Diary App</string>
 
     <!-- para sa login.xml -->
     <string name="login_title">Login</string>
