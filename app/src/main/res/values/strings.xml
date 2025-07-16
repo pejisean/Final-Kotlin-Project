@@ -38,4 +38,8 @@
     <string name="proceed">Proceed</string>
     <string name="welcome">Welcome</string>
 
+    <!-- para sa home.xml -->
+    <string name="home_title">MyMemory</string>
+    <string name="empty_diary_placeholder">No moments saved yet.\nTap the + button to add one!</string>
+
 </resources>
