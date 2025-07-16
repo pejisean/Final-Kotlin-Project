@@ -28,5 +28,17 @@
     <string name="professor">Sir. Joseph Calleja</string>
     <string name="datesubmitted">Date Submitted:</string>
     <string name="datesub">July 22, 2025</string>
+    <string name="signup_page">Sign Up</string>
+    <string name="tvSignupTitle" />
+    <string name="etName" />
+    <string name="hint_name">Name</string>
+    <string name="etEmail" />
+    <string name="hint2_email">Email</string>
+    <string name="etPassword" />
+    <string name="hint2_password">Password</string>
+    <string name="etConfirmPassword" />
+    <string name="hint2_confirmpassword">Confirm Password</string>
+    <string name="btn2signup">Sign Up</string>
+    <string name="go_to_login">Already have an account? Log In</string>
 
 </resources>
