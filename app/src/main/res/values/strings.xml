@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Kotlin_Final_Project</string>
-
-    <!-- para sa activity_main.xml -->
     <string name="title">Project Title: MyMoments: A Personal Diary App</string>
     <string name="course">Course: IT0079 - Mobile Applications Development 1</string>
     <string name="submitby">Submitted by:</string>
@@ -9,34 +7,38 @@
     <string name="peji">Peji, Sean James C.</string>
     <string name="licas">Licas, Jaymard T.</string>
     <string name="dulutan">Dulutan, John Carlo R.</string>
-    <string name="submitto">Submitted to:</string>
-    <string name="professor">Sir. Joseph Calleja</string>
-    <string name="datesubmitted">Date Submitted:</string>
-    <string name="datesub">July 22, 2025</string>
 
-    <!-- para sa intro.xml -->
-    <string name="name">MyMoments: A Personal Diary App</string>
-
-    <!-- para sa login.xml -->
     <string name="login_title">Login</string>
     <string name="hint_email">Email Address</string>
     <string name="hint_password">Password</string>
     <string name="button_login">Log In</string>
     <string name="go_to_signup">Don\'t have an account? Sign Up</string>
 
-    <!-- para sa signup.xml -->
-    <string name="signup_page">Sign Up</string>
-    <string name="hint_name">Name</string>
-    <!-- <string name="hint_email">Email</string> (already in "para sa login.xml) ^above^ -->
-    <!-- <string name="hint_password">Password</string> (already in "para sa login.xml) ^above^ -->
+    <string name="signup_title">Create Account</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
     <string name="hint_confirm_password">Confirm Password</string>
     <string name="button_signup">Sign Up</string>
     <string name="back_to_login">Back to Login</string>
-    <string name="btn2signup">Sign Up</string>
-    <string name="go_to_login">Already have an account? Log In</string>
 
     <string name="proceed">Proceed</string>
     <string name="welcome">Welcome</string>
-
+    <string name="name">MyMoments: A Personal Diary App</string>
+    <string name="submitto">Submitted to:</string>
+    <string name="professor">Sir. Joseph Calleja</string>
+    <string name="datesubmitted">Date Submitted:</string>
+    <string name="datesub">July 22, 2025</string>
+    <string name="signup_page">Sign Up</string>
+    <string name="tvSignupTitle" />
+    <string name="etName" />
+    <string name="hint_name">Name</string>
+    <string name="etEmail" />
+    <string name="hint2_email">Email</string>
+    <string name="etPassword" />
+    <string name="hint2_password">Password</string>
+    <string name="etConfirmPassword" />
+    <string name="hint2_confirmpassword">Confirm Password</string>
+    <string name="btn2signup">Sign Up</string>
+    <string name="go_to_login">Already have an account? Log In</string>
 
 </resources>
