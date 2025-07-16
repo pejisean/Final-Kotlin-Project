@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Kotlin-Final-Project</string>
+    <string name="title">Project Title: MyMoments: A Personal Diary App</string>
+    <string name="course">Course: IT0079 – Mobile Applications Development 1</string>
 </resources>
