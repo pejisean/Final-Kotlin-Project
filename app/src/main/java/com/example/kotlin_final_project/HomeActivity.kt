@@ -108,6 +108,9 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
 
         dialogView.findViewById<Button>(R.id.btn_delete).setOnClickListener {
             currentUser?.notes?.remove(note)
+            currentUser?.let { user ->
+                user.deletedNotesCount++
+            }
             loadNotes()
             Toast.makeText(this, getString(R.string.moment_deleted_toast), Toast.LENGTH_SHORT).show()
             alertDialog.dismiss()
