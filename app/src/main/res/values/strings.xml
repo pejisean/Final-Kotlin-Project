@@ -41,5 +41,10 @@
     <!-- para sa home.xml -->
     <string name="home_title">MyMemory</string>
     <string name="empty_diary_placeholder">No moments saved yet.\nTap the + button to add one!</string>
+    <string name="btnGotoIntro" />
+    <string name="btnMain">➜</string>
+    <string name="btnGotoLogin" />
+    <string name="btnMainIntro">➜</string>
+    <string name="btnGoBacktoLogin" />
 
 </resources>
