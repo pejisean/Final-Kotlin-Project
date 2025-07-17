@@ -59,6 +59,7 @@
     <string name="VAname">Full Name:</string>
     <string name="VAdate">Member Since:</string>
     <string name="VAnotes">Notes Created:</string>
+    <string name="VAnotes_deleted">Notes Deleted:</string>
 
     <!-- para sa account.xml sample data -->
     <string name="SDname">John Sean T. Antonio</string>
