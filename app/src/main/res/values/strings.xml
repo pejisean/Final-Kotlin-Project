@@ -77,4 +77,11 @@
     <string name="item_note_sample_date">July 18, 2025</string>
     <string name="item_note_sample_content">Note Content</string>
 
+    <!-- para sa dialog_confirm_delete.xml -->
+    <string name="delete_dialog_title">Confirm Deletion</string>
+    <string name="delete_dialog_message">Are you sure you want to delete this moment? This action cannot be undone.</string>
+    <string name="delete_dialog_cancel_button">Cancel</string>
+    <string name="delete_dialog_delete_button">Delete</string>
+    <string name="moment_deleted_toast">Moment deleted</string>
+
 </resources>
