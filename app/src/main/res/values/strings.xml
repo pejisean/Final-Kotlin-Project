@@ -30,8 +30,6 @@
     <!-- para sa signup.xml -->
     <string name="signup_page">Sign Up</string>
     <string name="hint_name">Name</string>
-    <!-- <string name="hint_email">Email</string> (already in "para sa login.xml) ^above^ -->
-    <!-- <string name="hint_password">Password</string> (already in "para sa login.xml) ^above^ -->
     <string name="hint_confirm_password">Confirm Password</string>
     <string name="button_signup">Sign Up</string>
     <string name="back_to_login">Back to Login</string>
@@ -42,7 +40,7 @@
     <string name="welcome">Welcome</string>
 
     <!-- para sa home.xml -->
-    <string name="home_title">MyMemory</string>
+    <string name="home_title">MyMoments</string>
     <string name="empty_diary_placeholder">No moments saved yet.\nTap the + button to add one!</string>
     <string name="add_new_note">Add New Note</string>
 
@@ -54,7 +52,6 @@
     <!-- para sa dropdown ng account.xml -->
     <string name="ACCinfo">Account Information</string>
     <string name="VAhome">Home</string>
-    <!-- <string name="logout">Logout</string>-->
     <string name="Umenu">User Menu</string>
 
     <!-- para sa account.xml -->
@@ -68,4 +65,11 @@
     <string name="SDdate">July 22, 2025</string>
     <string name="SDemail">jayseancarlomigz@gmail.com:</string>
 
- </resources>
+    <!-- para sa add_note.xml -->
+    <string name="add_note_title_hint">Title</string>
+    <string name="add_note_content_hint">Write your moment here…</string>
+    <string name="save_moment_button">Save Moment</string>
+    <string name="note_empty_error">Title and content cannot be empty.</string>
+    <string name="note_saved_success">Moment saved!</string>
+
+</resources>
