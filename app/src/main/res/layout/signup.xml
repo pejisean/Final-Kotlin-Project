@@ -86,8 +86,8 @@
     <Button
         android:id="@+id/btnGoToSignup"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:text="@string/go_to_login"
         android:textAllCaps="false"
