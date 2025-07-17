@@ -3,9 +3,12 @@ package com.example.kotlin_final_project
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.ViewCompat
@@ -96,7 +99,22 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
     }
 
     override fun onDeleteNote(note: Note) {
-        // TODO: Later, this will show a confirmation dialog and delete the note.
-        Toast.makeText(this, "Delete: ${note.title}", Toast.LENGTH_SHORT).show()
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_delete, null)
+        val builder = AlertDialog.Builder(this)
+            .setView(dialogView)
+
+        val alertDialog = builder.create()
+        alertDialog.show()
+
+        dialogView.findViewById<Button>(R.id.btn_delete).setOnClickListener {
+            currentUser?.notes?.remove(note)
+            loadNotes()
+            Toast.makeText(this, getString(R.string.moment_deleted_toast), Toast.LENGTH_SHORT).show()
+            alertDialog.dismiss()
+        }
+
+        dialogView.findViewById<Button>(R.id.btn_cancel).setOnClickListener {
+            alertDialog.dismiss()
+        }
     }
 }
