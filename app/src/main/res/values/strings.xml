@@ -84,5 +84,6 @@
     <string name="delete_dialog_cancel_button">Cancel</string>
     <string name="delete_dialog_delete_button">Delete</string>
     <string name="moment_deleted_toast">Moment deleted</string>
-
+    <string name="CDIBnote_options">Note options</string>
+    Note options
 </resources>
