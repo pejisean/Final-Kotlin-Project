@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:fitsSystemWindows="true"
+    tools:context=".AddNoteActivity">
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_note_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_note_title_hint"
+        android:inputType="textCapSentences"/>
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      android:layout_marginTop="16dp"
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_note_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:hint="@string/add_note_content_hint"
+        android:inputType="textMultiLine|textCapSentences"/>
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <Button
+      android:id="@+id/btn_save_note"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:text="@string/save_moment_button"/>
+
+</LinearLayout>
