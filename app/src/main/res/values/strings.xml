@@ -44,5 +44,28 @@
     <!-- para sa home.xml -->
     <string name="home_title">MyMemory</string>
     <string name="empty_diary_placeholder">No moments saved yet.\nTap the + button to add one!</string>
+    <string name="add_new_note">Add New Note</string>
 
-</resources>
+
+    <!-- para sa dropdown ng home -->
+    <string name="VAccount">View Account</string>
+    <string name="logout">Logout</string>
+
+    <!-- para sa dropdown ng account.xml -->
+    <string name="ACCinfo">Account Information</string>
+    <string name="VAhome">Home</string>
+    <!-- <string name="logout">Logout</string>-->
+    <string name="Umenu">User Menu</string>
+
+    <!-- para sa account.xml -->
+    <string name="VAemail">Email Address:</string>
+    <string name="VAname">Full Name:</string>
+    <string name="VAdate">Member Since:</string>
+    <string name="VAnotes">Notes Created:</string>
+
+    <!-- para sa account.xml sample data -->
+    <string name="SDname">John Sean T. Antonio</string>
+    <string name="SDdate">July 22, 2025</string>
+    <string name="SDemail">jayseancarlomigz@gmail.com:</string>
+
+ </resources>
