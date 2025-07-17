@@ -36,6 +36,8 @@ class AccountActivity : AppCompatActivity() {
                 binding.tvUserEmail.text = currentUser.email
                 binding.tvDateCreated.text = currentUser.creationDate
                 binding.tvNotesCreatedCount.text = currentUser.notes.size.toString()
+                // Set the deleted notes count
+                binding.tvNotesDeletedCount.text = currentUser.deletedNotesCount.toString()
             } else {
                 Toast.makeText(this, "Error: User not found.", Toast.LENGTH_SHORT).show()
                 finish()
