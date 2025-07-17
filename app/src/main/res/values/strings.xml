@@ -72,4 +72,9 @@
     <string name="note_empty_error">Title and content cannot be empty.</string>
     <string name="note_saved_success">Moment saved!</string>
 
+    <!-- para sa item_note.xml sample data -->
+    <string name="item_note_sample_title">Note Title</string>
+    <string name="item_note_sample_date">July 18, 2025</string>
+    <string name="item_note_sample_content">Note Content</string>
+
 </resources>
