@@ -3,12 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_view_account"
-        android:title="View Account" />
-    <item
-        android:id="@+id/action_night_mode"
-        android:title="Night Mode"
-        app:actionLayout="@layout/menu_item_night_mode" />
+        android:title="@string/VAccount"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_logout"
-        android:title="Logout" />
+        android:title="@string/logout"
+        app:showAsAction="never" />
 </menu>

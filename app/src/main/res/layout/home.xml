@@ -23,6 +23,7 @@
                 android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start"
                 android:text="@string/home_title"
                 android:textColor="#0A1215"
                 android:textSize="20sp"
@@ -34,9 +35,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="User Menu"
+                android:contentDescription="@string/Umenu"
                 android:padding="16dp"
-                android:src="@drawable/ic_user_account" />
+                android:src="@drawable/ic_user_account"
+                app:tint="#0A1215" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -68,6 +70,6 @@
         android:backgroundTint="#A7875E"
         android:src="@drawable/ic_add"
         app:tint="@color/white"
-        android:contentDescription="Add new note" />
+        android:contentDescription="@string/add_new_note" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
