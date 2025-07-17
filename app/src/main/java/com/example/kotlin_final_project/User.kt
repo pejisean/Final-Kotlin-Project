@@ -5,5 +5,6 @@ data class User(
     val email: String,
     val passwordHash: String,
     val creationDate: String,
-    val notes: MutableList<Note> = mutableListOf()
+    val notes: MutableList<Note> = mutableListOf(),
+    var deletedNotesCount: Int = 0
 )
