@@ -5,121 +5,164 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_navy"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/Title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/content_container"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="@string/title"
-        android:textSize="16sp"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnGotoIntro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
 
-    <TextView
-        android:id="@+id/Course"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/course"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Title" />
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/title"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/submittedby"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/submitby"
-        app:layout_constraintEnd_toStartOf="@+id/antonio"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Course" />
+        <TextView
+            android:id="@+id/Course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="@string/course"
+            android:textColor="@color/light_grey"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/antonio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/antonio"
-        app:layout_constraintBaseline_toBaselineOf="@+id/submittedby"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/submittedby" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@color/light_grey" />
 
-    <TextView
-        android:id="@+id/peji"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/peji"
-        app:layout_constraintStart_toStartOf="@+id/antonio"
-        app:layout_constraintTop_toBottomOf="@+id/antonio" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/licas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/licas"
-        app:layout_constraintStart_toStartOf="@+id/peji"
-        app:layout_constraintTop_toBottomOf="@+id/peji" />
+            <TextView
+                android:id="@+id/submittedby_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submitby"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/dulutan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/dulutan"
-        app:layout_constraintStart_toStartOf="@+id/licas"
-        app:layout_constraintTop_toBottomOf="@+id/licas" />
+            <TextView
+                android:id="@+id/antonio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/antonio"
+                android:textColor="@color/white"
+                app:layout_constraintBaseline_toBaselineOf="@+id/submittedby_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/submittedby_label" />
 
-    <TextView
-        android:id="@+id/submittedto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/submitto"
-        app:layout_constraintStart_toStartOf="@+id/submittedby"
-        app:layout_constraintTop_toBottomOf="@+id/dulutan" />
+            <TextView
+                android:id="@+id/peji"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/peji"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/antonio"
+                app:layout_constraintTop_toBottomOf="@+id/antonio" />
 
-    <TextView
-        android:id="@+id/professor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/professor"
-        app:layout_constraintBaseline_toBaselineOf="@+id/submittedto"
-        app:layout_constraintStart_toStartOf="@+id/antonio" />
+            <TextView
+                android:id="@+id/licas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/licas"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/peji"
+                app:layout_constraintTop_toBottomOf="@+id/peji" />
 
-    <TextView
-        android:id="@+id/datesubmitted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/datesubmitted"
-        app:layout_constraintStart_toStartOf="@+id/submittedto"
-        app:layout_constraintTop_toBottomOf="@+id/submittedto" />
+            <TextView
+                android:id="@+id/dulutan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/dulutan"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/licas"
+                app:layout_constraintTop_toBottomOf="@+id/licas" />
 
-    <TextView
-        android:id="@+id/datesubm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/datesub"
-        app:layout_constraintBaseline_toBaselineOf="@+id/datesubmitted"
-        app:layout_constraintStart_toStartOf="@+id/professor" />
+            <TextView
+                android:id="@+id/submittedto_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/submitto"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dulutan" />
+
+            <TextView
+                android:id="@+id/professor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/professor"
+                android:textColor="@color/white"
+                app:layout_constraintBaseline_toBaselineOf="@+id/submittedto_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/submittedto_label" />
+
+            <TextView
+                android:id="@+id/datesubmitted_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/datesubmitted"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/submittedto_label" />
+
+            <TextView
+                android:id="@+id/datesubm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/datesub"
+                android:textColor="@color/white"
+                app:layout_constraintBaseline_toBaselineOf="@+id/datesubmitted_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/datesubmitted_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnGotoIntro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btnMain"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/dirty_white"
+        android:textColor="@color/dark_navy"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
