@@ -7,20 +7,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/dark_navy"
     android:fitsSystemWindows="true"
     tools:context=".AddNoteActivity">
 
   <com.google.android.material.textfield.TextInputLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+      app:boxStrokeColor="@color/vibrant_orange"
+      app:hintTextColor="@color/vibrant_orange"
+      android:textColorHint="@color/black"
+      app:boxBackgroundColor="@color/light_grey">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_note_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/add_note_title_hint"
-        android:inputType="textCapSentences"/>
+        android:inputType="textCapSentences"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:padding="12dp" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <com.google.android.material.textfield.TextInputLayout
@@ -28,7 +36,11 @@
       android:layout_height="0dp"
       android:layout_weight="1"
       android:layout_marginTop="16dp"
-      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+      app:boxStrokeColor="@color/vibrant_orange"
+      app:hintTextColor="@color/vibrant_orange"
+      android:textColorHint="@color/black"
+      app:boxBackgroundColor="@color/light_grey">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_note_content"
@@ -36,7 +48,10 @@
         android:layout_height="match_parent"
         android:gravity="top"
         android:hint="@string/add_note_content_hint"
-        android:inputType="textMultiLine|textCapSentences"/>
+        android:inputType="textMultiLine|textCapSentences"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:padding="12dp" />
   </com.google.android.material.textfield.TextInputLayout>
 
   <Button
@@ -44,6 +59,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
-      android:text="@string/save_moment_button"/>
-
+      android:text="@string/save_moment_button"
+      android:backgroundTint="@color/dirty_white"
+      android:textColor="@color/dark_navy" />
 </LinearLayout>
