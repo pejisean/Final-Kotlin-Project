@@ -27,6 +27,9 @@ public class DatabaseManager {
         dbHelper.close();
     }
 
+
+    //User Management Methods
+    //Insert a new user
     public void userInsert(String username, String password, String email, String creationDate){
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.USERS_NAME, username);
@@ -37,6 +40,7 @@ public class DatabaseManager {
 
     }
 
+    // Fetch all users
     public Cursor userFetch(){
         String [] columns = new String[] {
                 DatabaseHelper.USERS_ID,
@@ -52,6 +56,7 @@ public class DatabaseManager {
         return cursor;
     }
 
+    // Update a user by id
     public int userUpdate(int id, String username, String password, String email, String creationDate) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHelper.USERS_NAME, username);
@@ -61,7 +66,64 @@ public class DatabaseManager {
         return database.update(DatabaseHelper.USERS_TABLE, contentValues, DatabaseHelper.USERS_ID + " = ?", new String[]{String.valueOf(id)});
     }
 
+    // Delete a user by id
     public void userDelete(int id) {
         database.delete(DatabaseHelper.USERS_TABLE, DatabaseHelper.USERS_ID + " = ?", new String[]{String.valueOf(id)});
+    }
+
+    //Note Management Methods
+    // Insert a new note
+    public void noteInsert(int userId, String title, String content, String date) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.NOTES_USER_ID, userId);
+        contentValues.put(DatabaseHelper.NOTES_TITLE, title);
+        contentValues.put(DatabaseHelper.NOTES_CONTENT, content);
+        contentValues.put(DatabaseHelper.NOTES_DATE, date);
+        database.insert(DatabaseHelper.NOTES_TABLE, null, contentValues);
+    }
+
+    // Fetch notes for a specific user
+    public Cursor noteFetch(int userId) {
+        String[] columns = new String[] {
+                DatabaseHelper.NOTES_ID,
+                DatabaseHelper.NOTES_USER_ID,
+                DatabaseHelper.NOTES_TITLE,
+                DatabaseHelper.NOTES_CONTENT,
+                DatabaseHelper.NOTES_DATE
+        };
+        Cursor cursor = database.query(
+                DatabaseHelper.NOTES_TABLE,
+                columns,
+                DatabaseHelper.NOTES_USER_ID + " = ?",
+                new String[]{String.valueOf(userId)},
+                null, null, null
+        );
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    // Update a note by its id
+    public int noteUpdate(int noteId, String title, String content, String date) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper.NOTES_TITLE, title);
+        contentValues.put(DatabaseHelper.NOTES_CONTENT, content);
+        contentValues.put(DatabaseHelper.NOTES_DATE, date);
+        return database.update(
+                DatabaseHelper.NOTES_TABLE,
+                contentValues,
+                DatabaseHelper.NOTES_ID + " = ?",
+                new String[]{String.valueOf(noteId)}
+        );
+    }
+
+    // Delete a note by its id
+    public void noteDelete(int noteId) {
+        database.delete(
+                DatabaseHelper.NOTES_TABLE,
+                DatabaseHelper.NOTES_ID + " = ?",
+                new String[]{String.valueOf(noteId)}
+        );
     }
 }
