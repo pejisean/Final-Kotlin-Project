@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Kotlin_Final_Project</string>
 
-    <!-- para sa activity_main.xml -->
     <string name="title">Project Title: MyMoments: A Personal Diary App</string>
     <string name="course">Course: IT0079 - Mobile Applications Development 1</string>
     <string name="submitby">Submitted by:</string>
@@ -15,19 +14,16 @@
     <string name="datesub">July 22, 2025</string>
     <string name="btnMain">Proceed</string>
 
-    <!-- para sa intro.xml -->
     <string name="titlewnopt">MyMoments: A Personal Diary App</string>
     <string name="btnMainIntro">Welcome</string>
 
 
-    <!-- para sa login.xml -->
     <string name="login_title">Login</string>
     <string name="hint_email">Email Address</string>
     <string name="hint_password">Password</string>
     <string name="button_login">Log In</string>
     <string name="go_to_signup">Don\'t have an account? Sign Up</string>
 
-    <!-- para sa signup.xml -->
     <string name="signup_page">Sign Up</string>
     <string name="hint_name">Name</string>
     <string name="hint_confirm_password">Confirm Password</string>
@@ -39,51 +35,42 @@
     <string name="proceed">Proceed</string>
     <string name="welcome">Welcome</string>
 
-    <!-- para sa home.xml -->
     <string name="home_title">MyMoments</string>
     <string name="empty_diary_placeholder">No moments saved yet.\nTap the + button to add one!</string>
     <string name="add_new_note">Add New Note</string>
 
 
-    <!-- para sa dropdown ng home -->
     <string name="VAccount">View Account</string>
     <string name="logout">Logout</string>
 
-    <!-- para sa dropdown ng account.xml -->
     <string name="ACCinfo">Account Information</string>
     <string name="VAhome">Home</string>
     <string name="Umenu">User Menu</string>
 
-    <!-- para sa account.xml -->
     <string name="VAemail">Email Address:</string>
     <string name="VAname">Full Name:</string>
     <string name="VAdate">Member Since:</string>
     <string name="VAnotes">Notes Created:</string>
     <string name="VAnotes_deleted">Notes Deleted:</string>
 
-    <!-- para sa account.xml sample data -->
     <string name="SDname">John Sean T. Antonio</string>
     <string name="SDdate">July 22, 2025</string>
     <string name="SDemail">jayseancarlomigz@gmail.com:</string>
 
-    <!-- para sa add_note.xml -->
     <string name="add_note_title_hint">Title</string>
     <string name="add_note_content_hint">Write your moment here…</string>
     <string name="save_moment_button">Save Moment</string>
     <string name="note_empty_error">Title and content cannot be empty.</string>
     <string name="note_saved_success">Moment saved!</string>
-
-    <!-- para sa item_note.xml sample data -->
-    <string name="item_note_sample_title">Note Title</string>
+    <string name="update_note_button">Update Moment</string> <string name="note_updated_success">Moment updated successfully!</string> <string name="item_note_sample_title">Note Title</string>
     <string name="item_note_sample_date">July 18, 2025</string>
     <string name="item_note_sample_content">Note Content</string>
 
-    <!-- para sa dialog_confirm_delete.xml -->
     <string name="delete_dialog_title">Confirm Deletion</string>
     <string name="delete_dialog_message">Are you sure you want to delete this moment? This action cannot be undone.</string>
     <string name="delete_dialog_cancel_button">Cancel</string>
     <string name="delete_dialog_delete_button">Delete</string>
     <string name="moment_deleted_toast">Moment deleted</string>
     <string name="CDIBnote_options">Note options</string>
-    Note options
-</resources>
+
+    <string name="edit">Edit</string>   <string name="delete">Delete</string> </resources>
