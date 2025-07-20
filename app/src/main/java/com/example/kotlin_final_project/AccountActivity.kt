@@ -14,11 +14,20 @@ class AccountActivity : AppCompatActivity() {
 
     private lateinit var binding: AccountBinding
 
+    //Declarations for Database
+    private var userId: Int = -1
+    private lateinit var dbManager: DatabaseManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = AccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Get user ID from intent
+        userId = intent.getIntExtra("USER_ID", -1)
+        dbManager = DatabaseManager(this)
+        dbManager.open()
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -26,26 +35,45 @@ class AccountActivity : AppCompatActivity() {
             insets
         }
 
-        val userEmail = intent.getStringExtra("USER_EMAIL")
+        // Fetch user details from the database
+        val cursor = dbManager.userFetch()
+        var userName = ""
+        var userEmail = ""
+        var creationDate = ""
+        var userFound = false
 
-        if (userEmail != null) {
-            val currentUser = UserDatabase.users.find { it.email.equals(userEmail, ignoreCase = true) }
+        // Check if the cursor is not null and has data
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_ID))
+                if (id == userId) {
+                    userName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_NAME))
+                    userEmail = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_EMAIL))
+                    creationDate = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_DATE))
+                    userFound = true
+                    break
+                }
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
 
-            if (currentUser != null) {
-                binding.tvUserName.text = currentUser.name
-                binding.tvUserEmail.text = currentUser.email
-                binding.tvDateCreated.text = currentUser.creationDate
-                binding.tvNotesCreatedCount.text = currentUser.notes.size.toString()
-                // Set the deleted notes count
-                binding.tvNotesDeletedCount.text = currentUser.deletedNotesCount.toString()
-            } else {
-                Toast.makeText(this, "Error: User not found.", Toast.LENGTH_SHORT).show()
-                finish()
-            }
+
+        if (userFound) {
+            // Fetch notes count for this user
+            val notesCursor = dbManager.noteFetch(userId)
+            val notesCount = notesCursor.count
+            notesCursor.close()
+
+            binding.tvUserName.text = userName
+            binding.tvUserEmail.text = userEmail
+            binding.tvDateCreated.text = creationDate
+            binding.tvNotesCreatedCount.text = notesCount.toString()
+            binding.tvNotesDeletedCount.text = "N/A" // Not tracked in DB
         } else {
-            Toast.makeText(this, "Error: No user specified.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Error: User not found.", Toast.LENGTH_SHORT).show()
             finish()
         }
+
 
         binding.userMenuIcon.setOnClickListener { view ->
             val popupMenu = PopupMenu(this, view)
@@ -70,5 +98,10 @@ class AccountActivity : AppCompatActivity() {
             }
             popupMenu.show()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dbManager.close() // Close the database connection when the activity is destroyed
     }
 }
