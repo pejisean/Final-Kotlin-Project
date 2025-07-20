@@ -20,9 +20,12 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
 
     private lateinit var binding: HomeBinding
     private var currentUser: User? = null
+    private lateinit var noteAdapter: NoteAdapter // Declare NoteAdapter here
 
-    private val addNoteResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    // Launcher for Add/Edit Note Activity
+    private val addEditNoteResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
+            // Refresh notes if AddNoteActivity finished successfully (note added or edited)
             loadNotes()
         }
     }
@@ -41,12 +44,12 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
         val userEmail = intent.getStringExtra("USER_EMAIL")
         currentUser = UserDatabase.users.find { it.email.equals(userEmail, ignoreCase = true) }
 
-        setupRecyclerView()
-        loadNotes()
+        setupRecyclerView() // Setup RecyclerView and initialize adapter
+        loadNotes() // Load initial notes into the adapter
 
         binding.fabAddNote.setOnClickListener {
             val intent = Intent(this, AddNoteActivity::class.java)
-            addNoteResultLauncher.launch(intent)
+            addEditNoteResultLauncher.launch(intent) // Use the unified launcher
         }
 
         binding.userMenuIcon.setOnClickListener { view ->
@@ -78,27 +81,39 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
 
     private fun setupRecyclerView() {
         binding.diaryRecyclerView.layoutManager = LinearLayoutManager(this)
+        // Initialize the adapter once with an empty list.
+        // Data will be populated via updateNotes() in loadNotes().
+        noteAdapter = NoteAdapter(mutableListOf(), this) // Pass 'this' as OnNoteActionsListener
+        binding.diaryRecyclerView.adapter = noteAdapter
     }
 
     private fun loadNotes() {
         currentUser?.let { user ->
+            // Update the adapter with the current notes from the user.
+            // .reversed() if you want the newest notes at the top.
+            noteAdapter.updateNotes(user.notes.reversed())
+
+            // Show/hide placeholder text based on notes presence
             if (user.notes.isEmpty()) {
                 binding.emptyDiaryText.visibility = View.VISIBLE
                 binding.diaryRecyclerView.visibility = View.GONE
             } else {
                 binding.emptyDiaryText.visibility = View.GONE
                 binding.diaryRecyclerView.visibility = View.VISIBLE
-                binding.diaryRecyclerView.adapter = NoteAdapter(user.notes.reversed(), this)
             }
         }
     }
 
+    // --- OnNoteActionsListener Implementations ---
+
     override fun onEditNote(note: Note) {
-        // TODO: Later, this will open an edit screen.
-        Toast.makeText(this, "Edit: ${note.title}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, AddNoteActivity::class.java)
+        intent.putExtra(AddNoteActivity.EXTRA_NOTE, note) // Pass the entire Note object for editing
+        addEditNoteResultLauncher.launch(intent) // Launch AddNoteActivity in edit mode
     }
 
     override fun onDeleteNote(note: Note) {
+        // Inflate the custom dialog layout
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_confirm_delete, null)
         val builder = AlertDialog.Builder(this)
             .setView(dialogView)
@@ -106,18 +121,19 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
         val alertDialog = builder.create()
         alertDialog.show()
 
+        // Set up click listeners for dialog buttons
         dialogView.findViewById<Button>(R.id.btn_delete).setOnClickListener {
-            currentUser?.notes?.remove(note)
+            currentUser?.notes?.remove(note) // Remove the note from the user's list
             currentUser?.let { user ->
-                user.deletedNotesCount++
+                user.deletedNotesCount++ // Increment deleted notes count
             }
-            loadNotes()
+            loadNotes() // Reload notes to update RecyclerView
             Toast.makeText(this, getString(R.string.moment_deleted_toast), Toast.LENGTH_SHORT).show()
-            alertDialog.dismiss()
+            alertDialog.dismiss() // Dismiss the dialog
         }
 
         dialogView.findViewById<Button>(R.id.btn_cancel).setOnClickListener {
-            alertDialog.dismiss()
+            alertDialog.dismiss() // Dismiss the dialog
         }
     }
 }
