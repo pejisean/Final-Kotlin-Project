@@ -12,6 +12,7 @@ import java.security.MessageDigest
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import com.example.kotlin_final_project.DatabaseManager
 
 class SignupActivity : AppCompatActivity() {
 
@@ -56,15 +57,29 @@ class SignupActivity : AppCompatActivity() {
             return
         }
 
-        if (UserDatabase.users.any { it.email.equals(email, ignoreCase = true) }) {
-            Toast.makeText(this, "A user with this email already exists.", Toast.LENGTH_SHORT).show()
+        //Checking to see if Email already exists in database
+        val dbManager = DatabaseManager(this);
+        dbManager.open()
+        val cursor = dbManager.userFetch();
+        val emailExists = (0 until cursor.count).any {
+            cursor.moveToPosition(it)
+            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_EMAIL)).equals(email, ignoreCase = true)
+        }
+        cursor.close()
+
+        if (emailExists){
+            Toast.makeText(this, "Email already exists. Please use a different email.", Toast.LENGTH_SHORT).show()
+            dbManager.close()
             return
         }
 
         val passwordHash = hashString(password)
         val creationDate = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).format(Date())
-        val newUser = User(name, email, passwordHash, creationDate)
-        UserDatabase.users.add(newUser)
+
+        //Insert user into the database
+        dbManager.userInsert(name, passwordHash, email, creationDate)
+        dbManager.close()
+
 
         Toast.makeText(this, "Sign-up successful! Please log in.", Toast.LENGTH_LONG).show()
 
