@@ -105,3 +105,5 @@ class AccountActivity : AppCompatActivity() {
         dbManager.close() // Close the database connection when the activity is destroyed
     }
 }
+
+
