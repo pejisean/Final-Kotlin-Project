@@ -30,14 +30,22 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 
     //Notes Table Building
+    //Notes Table Building
+    static final String NOTES_TABLE = "Notes";
+    static final String NOTES_ID = "id";
+    static final String NOTES_USER_ID = "userId";
+    static final String NOTES_TITLE = "title";
+    static final String NOTES_CONTENT = "content";
+    static final String NOTES_DATE = "date";
+
     static final String CREATE_NOTES_TABLE =
-            "CREATE TABLE IF NOT EXISTS Note (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "userId INTEGER NOT NULL, " +
-                    "title TEXT NOT NULL, " +
-                    "content TEXT NOT NULL, " +
-                    "date TEXT NOT NULL, " +
-                    "FOREIGN KEY(userId) REFERENCES Users(id) ON DELETE CASCADE" +
+            "CREATE TABLE IF NOT EXISTS " + NOTES_TABLE + " (" +
+                    NOTES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    NOTES_USER_ID + " INTEGER NOT NULL, " +
+                    NOTES_TITLE + " TEXT NOT NULL, " +
+                    NOTES_CONTENT + " TEXT NOT NULL, " +
+                    NOTES_DATE + " TEXT NOT NULL, " +
+                    "FOREIGN KEY(" + NOTES_USER_ID + ") REFERENCES " + USERS_TABLE + "(" + USERS_ID + ") ON DELETE CASCADE" +
                     ");";
 
     public DatabaseHelper(@Nullable Context context) {
@@ -53,5 +61,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS USERS");
+        db.execSQL("DROP TABLE IF EXISTS NOTES");
     }
 }
