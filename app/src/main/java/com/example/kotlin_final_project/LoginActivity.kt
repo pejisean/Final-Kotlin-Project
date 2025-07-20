@@ -45,27 +45,41 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        val user = UserDatabase.users.find { it.email.equals(email, ignoreCase = true) }
+        val dbManager = DatabaseManager(this)
+        dbManager.open()
+        val cursor = dbManager.userFetch()
+        val passwordHash = hashString(password)
+        var userFound = false
+        var userName = ""
+        var userId: Int? = null
 
-        if (user == null) {
+        while (cursor.moveToNext()) {
+            val dbEmail = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_EMAIL))
+            val dbPassword = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_PASSWORD))
+            val dbName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_NAME))
+            val dbUserId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_ID))
+            if (dbEmail.equals(email, ignoreCase = true) && dbPassword == passwordHash) {
+                userFound = true
+                userName = dbName
+                userId = dbUserId
+                break
+            }
+        }
+        cursor.close()
+        dbManager.close()
+
+        if (!userFound) {
             Toast.makeText(this, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val passwordHash = hashString(password)
-        if (user.passwordHash == passwordHash) {
-            Toast.makeText(this, "Welcome, ${user.name}!", Toast.LENGTH_SHORT).show()
-
-            // Set the current user and pass their email to the next screen
-            UserDatabase.currentUserEmail = user.email
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("USER_EMAIL", user.email)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-        } else {
-            Toast.makeText(this, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show()
-        }
+        Toast.makeText(this, "Welcome, $userName!", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("USER_ID", userId)
+        intent.putExtra("USER_EMAIL", email)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 
     private fun hashString(input: String): String {
