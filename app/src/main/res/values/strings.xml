@@ -78,4 +78,12 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="about_us">About Us</string>
+    <string name="about_us_title">About Us</string>
+    <string name="meet_our_team">Meet Our Team</string>
+    <string name="about_us_description">We are the development team behind MyMoments, a personal diary app designed to help you capture and cherish your daily thoughts and experiences. Our goal is to provide a simple, secure, and intuitive platform for your personal reflections.</string>
+    <string name="name_juan_miguel">Juan Miguel G. Antonio</string>
+    <string name="name_sean_james">Sean James C. Peji</string>
+    <string name="name_jaymard">Jaymard T. Licas</string>
+    <string name="name_john_carlo">John Carlo R. Dulutan</string>
+
 </resources>
