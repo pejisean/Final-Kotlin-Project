@@ -20,6 +20,9 @@ class AddNoteActivity : AppCompatActivity() {
     private var isEditing: Boolean = false
     private var currentNoteId: String? = null // To store the ID of the note being edited
 
+    private var userId: Int = -1
+    private lateinit var dbManager: DatabaseManager
+
     companion object {
         const val EXTRA_NOTE = "extra_note" // Key to pass Note object when editing
         const val REQUEST_CODE_ADD_NOTE = 1
@@ -31,6 +34,11 @@ class AddNoteActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = AddNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Retrieve the user ID from the intent
+        userId = intent.getIntExtra("USER_ID", -1)
+        dbManager = DatabaseManager(this)
+        dbManager.open()
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -76,28 +84,21 @@ class AddNoteActivity : AppCompatActivity() {
         }
 
         val currentDate = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault()).format(Date())
-        val currentUserEmail = UserDatabase.currentUserEmail // Assuming UserDatabase is accessible
-        val user = UserDatabase.users.find { it.email.equals(currentUserEmail, ignoreCase = true) }
 
+        // If editing, update the existing note; otherwise, insert a new note
         if (isEditing && currentNoteId != null) {
-            // Find the note in the user's list by its ID and update its properties
-            val noteToUpdate = user?.notes?.find { it.id == currentNoteId }
-            if (noteToUpdate != null) {
-                noteToUpdate.title = title
-                noteToUpdate.content = content
-                // noteToUpdate.date = currentDate // Uncomment if you want to update the date on edit
-                Toast.makeText(this, getString(R.string.note_updated_success), Toast.LENGTH_SHORT).show() // Make sure this string resource exists
-            } else {
-                Toast.makeText(this, "Error: Note not found for update.", Toast.LENGTH_SHORT).show()
-            }
+            dbManager.noteUpdate(currentNoteId!!.toInt(), title, content, currentDate) // Ensure currentNoteId is not null
+            Toast.makeText(this, getString(R.string.note_updated_success), Toast.LENGTH_SHORT).show()
         } else {
-            // Create a new note
-            val newNote = Note(title = title, content = content, date = currentDate)
-            user?.notes?.add(newNote)
+            dbManager.noteInsert(userId, title, content, currentDate) // Insert new note
             Toast.makeText(this, getString(R.string.note_saved_success), Toast.LENGTH_SHORT).show()
         }
+        setResult(Activity.RESULT_OK)
+        finish()
+    }
 
-        setResult(Activity.RESULT_OK) // Indicate success to the calling activity
-        finish() // Close the activity
+    override fun onDestroy() {
+        super.onDestroy()
+        dbManager.close() // Close the database connection when the activity is destroyed
     }
 }
