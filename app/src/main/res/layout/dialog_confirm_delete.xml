@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="@color/light_navy_toolbar">
 
     <TextView
         android:id="@+id/tv_dialog_title"
@@ -12,7 +14,7 @@
         android:text="@string/delete_dialog_title"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/vibrant_orange"
         android:layout_gravity="center_horizontal"/>
 
     <TextView
@@ -22,6 +24,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/delete_dialog_message"
         android:textSize="16sp"
+        android:textColor="@color/dirty_white"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"/>
 
@@ -38,7 +41,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:text="@string/delete_dialog_cancel_button"/>
+            android:text="@string/delete_dialog_cancel_button"
+            app:strokeColor="@color/vibrant_orange"
+            android:textColor="@color/dirty_white"
+            app:rippleColor="@color/vibrant_orange"/>
 
         <Button
             android:id="@+id/btn_delete"
@@ -47,7 +53,8 @@
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:text="@string/delete_dialog_delete_button"
-            android:backgroundTint="@android:color/holo_red_dark"/>
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 
