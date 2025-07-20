@@ -152,4 +152,9 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
             alertDialog.dismiss() // Dismiss the dialog without deleting
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dbManager.close() // Close the database connection when the activity is destroyed
+    }
 }
