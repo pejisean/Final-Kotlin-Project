@@ -16,14 +16,18 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/light_navy_toolbar" app:titleTextColor="@color/white"> <TextView
-        android:id="@+id/toolbar_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/ACCinfo"
-        android:textColor="@color/white" android:textSize="20sp"
-        android:textStyle="bold" />
+        android:background="@color/light_navy_toolbar" app:titleTextColor="@color/white">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:fontFamily="cursive"
+            android:text="@string/ACCinfo"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/user_menu_icon"
@@ -47,9 +51,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:text="@string/VAname"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+            android:textColor="@color/light_grey"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_user_name"
@@ -64,9 +69,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:text="@string/VAemail"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+            android:textColor="@color/light_grey"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_user_email"
@@ -81,9 +87,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:text="@string/VAdate"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+            android:textColor="@color/light_grey"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_date_created"
@@ -98,9 +105,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:text="@string/VAnotes"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+            android:textColor="@color/light_grey"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_notes_created_count"
@@ -115,9 +123,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
             android:text="@string/VAnotes_deleted"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+            android:textColor="@color/light_grey"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_notes_deleted_count"
