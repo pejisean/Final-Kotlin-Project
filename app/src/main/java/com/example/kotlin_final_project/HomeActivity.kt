@@ -15,12 +15,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_final_project.databinding.HomeBinding
+import com.example.kotlin_final_project.DatabaseManager
 
 class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
 
     private lateinit var binding: HomeBinding
     private var currentUser: User? = null
     private lateinit var noteAdapter: NoteAdapter // Declare NoteAdapter here
+
+    private var userId: Int = -1
+    private lateinit var dbManager: DatabaseManager
 
     // Launcher for Add/Edit Note Activity
     private val addEditNoteResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -34,6 +38,11 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
         super.onCreate(savedInstanceState)
         binding = HomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Opening the database
+        userId = intent.getIntExtra("USER_ID", -1)
+        dbManager = DatabaseManager(this)
+        dbManager.open()
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -49,7 +58,8 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
 
         binding.fabAddNote.setOnClickListener {
             val intent = Intent(this, AddNoteActivity::class.java)
-            addEditNoteResultLauncher.launch(intent) // Use the unified launcher
+            intent.putExtra("USER_ID", userId) // Pass user ID to AddNoteActivity
+            addEditNoteResultLauncher.launch(intent)
         }
 
         binding.userMenuIcon.setOnClickListener { view ->
@@ -88,28 +98,37 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
     }
 
     private fun loadNotes() {
-        currentUser?.let { user ->
-            // Update the adapter with the current notes from the user.
-            // .reversed() if you want the newest notes at the top.
-            noteAdapter.updateNotes(user.notes.reversed())
-
-            // Show/hide placeholder text based on notes presence
-            if (user.notes.isEmpty()) {
-                binding.emptyDiaryText.visibility = View.VISIBLE
-                binding.diaryRecyclerView.visibility = View.GONE
-            } else {
-                binding.emptyDiaryText.visibility = View.GONE
-                binding.diaryRecyclerView.visibility = View.VISIBLE
-            }
+        // Fetch notes from the database for the current user
+        val cursor = dbManager.noteFetch(userId)
+        val notes = mutableListOf<Note>()
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_ID))
+            val title = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_TITLE))
+            val content = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_CONTENT))
+            val date = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_DATE))
+            notes.add(Note(id = id.toString(), title = title, content = content, date = date))
         }
+        cursor.close()
+        noteAdapter.updateNotes(notes.reversed())
+
+        // Check if notes list is empty and update UI accordingly
+        if (notes.isEmpty()) {
+            binding.emptyDiaryText.visibility = View.VISIBLE
+            binding.diaryRecyclerView.visibility = View.GONE
+        } else {
+            binding.emptyDiaryText.visibility = View.GONE
+            binding.diaryRecyclerView.visibility = View.VISIBLE
+        }
+
     }
 
     // --- OnNoteActionsListener Implementations ---
 
     override fun onEditNote(note: Note) {
         val intent = Intent(this, AddNoteActivity::class.java)
-        intent.putExtra(AddNoteActivity.EXTRA_NOTE, note) // Pass the entire Note object for editing
-        addEditNoteResultLauncher.launch(intent) // Launch AddNoteActivity in edit mode
+        intent.putExtra(AddNoteActivity.EXTRA_NOTE, note)
+        intent.putExtra("USER_ID", userId) // Pass user ID to AddNoteActivity
+        addEditNoteResultLauncher.launch(intent) //Launch AddNoteActivity in edit mode
     }
 
     override fun onDeleteNote(note: Note) {
@@ -123,17 +142,14 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
 
         // Set up click listeners for dialog buttons
         dialogView.findViewById<Button>(R.id.btn_delete).setOnClickListener {
-            currentUser?.notes?.remove(note) // Remove the note from the user's list
-            currentUser?.let { user ->
-                user.deletedNotesCount++ // Increment deleted notes count
-            }
-            loadNotes() // Reload notes to update RecyclerView
+            dbManager.noteDelete(note.id.toInt()) // Delete the note from the database
+            loadNotes()
             Toast.makeText(this, getString(R.string.moment_deleted_toast), Toast.LENGTH_SHORT).show()
-            alertDialog.dismiss() // Dismiss the dialog
+            alertDialog.dismiss()
         }
 
         dialogView.findViewById<Button>(R.id.btn_cancel).setOnClickListener {
-            alertDialog.dismiss() // Dismiss the dialog
+            alertDialog.dismiss() // Dismiss the dialog without deleting
         }
     }
 }
