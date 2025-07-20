@@ -70,7 +70,7 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
                 when (menuItem.itemId) {
                     R.id.action_view_account -> {
                         val intent = Intent(this, AccountActivity::class.java)
-                        intent.putExtra("USER_EMAIL", currentUser?.email)
+                        intent.putExtra("USER_ID", userId) // Pass userId, not email
                         startActivity(intent)
                         true
                     }
