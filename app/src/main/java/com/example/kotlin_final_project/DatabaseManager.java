@@ -37,7 +37,7 @@ public class DatabaseManager {
 
     }
 
-    public Cursor userfetch(){
+    public Cursor userFetch(){
         String [] columns = new String[] {
                 DatabaseHelper.USERS_ID,
                 DatabaseHelper.USERS_NAME,
