@@ -1,131 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_navy" android:fitsSystemWindows="true"
+    android:background="@color/dark_navy"
+    android:fitsSystemWindows="true"
     tools:context=".AccountActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:elevation="12dp"> <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/light_navy_toolbar" app:titleTextColor="@color/white"> <TextView
-        android:id="@+id/toolbar_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/ACCinfo"
-        android:textColor="@color/white" android:textSize="20sp"
-        android:textStyle="bold" />
+        app:elevation="12dp">
 
-        <ImageButton
-            android:id="@+id/user_menu_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/Umenu"
-            android:padding="16dp"
-            android:src="@drawable/ic_user_account"
-            app:tint="@color/dirty_white" /> </androidx.appcompat.widget.Toolbar>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/light_navy_toolbar"
+            app:titleTextColor="@color/white">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="cursive"
+                android:text="@string/ACCinfo"
+                android:textColor="@color/white"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/user_menu_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/Umenu"
+                android:padding="16dp"
+                android:src="@drawable/ic_user_account"
+                app:tint="@color/dirty_white" />
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/VAname"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
 
-        <TextView
-            android:id="@+id/tv_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/dirty_white"
-            android:textSize="24sp"
-            tools:text="@string/SDname" />
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_profile_picture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:padding="4dp"
+                android:src="@drawable/ic_default_profile_placeholder"
+                android:scaleType="centerCrop"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:strokeColor="@color/dirty_white"
+                app:strokeWidth="2dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/VAemail"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_user_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/dirty_white"
-            android:textSize="24sp"
-            tools:text="@string/SDemail" />
+                <!-- Name Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/VAname"
+                    android:textColor="@color/light_grey"
+                    android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/VAdate"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/dirty_white"
+                    android:textSize="24sp"
+                    tools:text="@string/SDname" />
 
-        <TextView
-            android:id="@+id/tv_date_created"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/dirty_white"
-            android:textSize="24sp"
-            tools:text="@string/SDdate" />
+                <!-- Email Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/VAemail"
+                    android:textColor="@color/light_grey"
+                    android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/VAnotes"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+                <TextView
+                    android:id="@+id/tv_user_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/dirty_white"
+                    android:textSize="24sp"
+                    tools:text="@string/SDemail" />
 
-        <TextView
-            android:id="@+id/tv_notes_created_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/dirty_white"
-            android:textSize="24sp"
-            tools:text="5" />
+                <!-- Date Created Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/VAdate"
+                    android:textColor="@color/light_grey"
+                    android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/VAnotes_deleted"
-            android:textSize="16sp"
-            android:textColor="@color/light_grey"/>
+                <TextView
+                    android:id="@+id/tv_date_created"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/dirty_white"
+                    android:textSize="24sp"
+                    tools:text="@string/SDdate" />
 
-        <TextView
-            android:id="@+id/tv_notes_deleted_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/dirty_white"
-            android:textSize="24sp"
-            tools:text="2" /> </LinearLayout>
+                <!-- Notes Created Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/VAnotes"
+                    android:textColor="@color/light_grey"
+                    android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tv_notes_created_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/dirty_white"
+                    android:textSize="24sp"
+                    tools:text="5" />
+
+                <!-- Notes Deleted Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/VAnotes_deleted"
+                    android:textColor="@color/light_grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_notes_deleted_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="@color/dirty_white"
+                    android:textSize="24sp"
+                    tools:text="2" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
