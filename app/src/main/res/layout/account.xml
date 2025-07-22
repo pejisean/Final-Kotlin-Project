@@ -155,24 +155,6 @@
                     android:textColor="@color/dirty_white"
                     android:textSize="24sp"
                     tools:text="5" />
-
-                <!-- Notes Deleted Section -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
-                    android:text="@string/VAnotes_deleted"
-                    android:textColor="@color/light_grey"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/tv_notes_deleted_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:textColor="@color/dirty_white"
-                    android:textSize="24sp"
-                    tools:text="2" />
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -53,7 +53,6 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
         }
 
         val userEmail = intent.getStringExtra("USER_EMAIL")
-        currentUser = UserDatabase.users.find { it.email.equals(userEmail, ignoreCase = true) }
 
         setupRecyclerView()
         loadNotes()

@@ -51,7 +51,6 @@
     <string name="VAname">Full Name:</string>
     <string name="VAdate">Member Since:</string>
     <string name="VAnotes">Notes Created:</string>
-    <string name="VAnotes_deleted">Notes Deleted:</string>
 
     <string name="SDname">John Sean T. Antonio</string>
     <string name="SDdate">July 22, 2025</string>
