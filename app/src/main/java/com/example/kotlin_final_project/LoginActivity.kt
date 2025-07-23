@@ -53,17 +53,19 @@ class LoginActivity : AppCompatActivity() {
         var userName = ""
         var userId: Int? = null
 
-        while (cursor.moveToNext()) {
-            val dbEmail = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_EMAIL))
-            val dbPassword = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_PASSWORD))
-            val dbName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_NAME))
-            val dbUserId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_ID))
-            if (dbEmail.equals(email, ignoreCase = true) && dbPassword == passwordHash) {
-                userFound = true
-                userName = dbName
-                userId = dbUserId
-                break
-            }
+        if (cursor.moveToFirst()) {
+            do {
+                val dbEmail = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_EMAIL))
+                val dbPassword = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_PASSWORD))
+                val dbName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_NAME))
+                val dbUserId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.USERS_ID))
+                if (dbEmail.equals(email, ignoreCase = true) && dbPassword == passwordHash) {
+                    userFound = true
+                    userName = dbName
+                    userId = dbUserId
+                    break
+                }
+            } while (cursor.moveToNext())
         }
         cursor.close()
         dbManager.close()

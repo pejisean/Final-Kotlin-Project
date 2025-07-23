@@ -104,12 +104,14 @@ class HomeActivity : AppCompatActivity(), NoteAdapter.OnNoteActionsListener {
     private fun loadNotes() {
         val cursor = dbManager.noteFetch(userId)
         val notes = mutableListOf<Note>()
-        while (cursor.moveToNext()) {
-            val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_ID))
-            val title = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_TITLE))
-            val content = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_CONTENT))
-            val date = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_DATE))
-            notes.add(Note(id = id.toString(), title = title, content = content, date = date))
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_ID))
+                val title = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_TITLE))
+                val content = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_CONTENT))
+                val date = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.NOTES_DATE))
+                notes.add(Note(id = id.toString(), title = title, content = content, date = date))
+            } while (cursor.moveToNext())
         }
         cursor.close()
         noteAdapter.updateNotes(notes.reversed())
