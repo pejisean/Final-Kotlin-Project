@@ -68,7 +68,6 @@ class AccountActivity : AppCompatActivity() {
             binding.tvUserEmail.text = userEmail
             binding.tvDateCreated.text = creationDate
             binding.tvNotesCreatedCount.text = notesCount.toString()
-            binding.tvNotesDeletedCount.text = "N/A" // Not tracked in DB
         } else {
             Toast.makeText(this, "Error: User not found.", Toast.LENGTH_SHORT).show()
             finish()

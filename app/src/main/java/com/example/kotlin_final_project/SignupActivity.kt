@@ -52,6 +52,11 @@ class SignupActivity : AppCompatActivity() {
             return
         }
 
+        if (!isValidEmail(email)) {
+            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         if (password != confirmPassword) {
             Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show()
             return
@@ -93,5 +98,9 @@ class SignupActivity : AppCompatActivity() {
         return MessageDigest.getInstance("SHA-256")
             .digest(input.toByteArray())
             .fold("") { str, it -> str + "%02x".format(it) }
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }
